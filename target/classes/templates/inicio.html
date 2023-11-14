@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Bienvenidos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  </head>
+
+  <body>
+  
+    <table>
+		 <tr>
+			 <td>Nombre</td>
+			 <td>Apellido</td>
+			 <td>DNI</td>
+		 </tr>
+		 <tr th:each="cl: ${cli}">
+			 <td th:text="${cl.nombre}"></td>
+			 <td th:text="${cl.apellido}"></td>
+			 <td th:text="${cl.dni}"></td>
+		 </tr>
+	</table>
+	<br><br><br><br>
+	
+	<form th:action="@{/oficio/crear-clientes}" 
+		  th:object="${clie}"
+		  method="post">
+		
+		<input type="text" th:field="*{nombre}"><br>
+		<input type="text" th:field="*{apellido}"><br>
+		<input type="number" th:field="*{dni}"><br>
+		
+		<input type="submit" th:value="'Agregar'">
+		
+	</form>
+	
+  </body>
+
+</html>
